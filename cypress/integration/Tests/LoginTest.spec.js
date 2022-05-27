@@ -10,10 +10,15 @@ describe("Login Test",() => {
 
     beforeEach("",function (){
         cy.visit("/")
+        cy.log("------------" + Cypress.currentTest.title.toUpperCase()+ " TEST STARTED ------------------")
 
     })
 
-    context("pozitive scnerio",()=>{
+    afterEach("",function (){
+        cy.log("------------" + Cypress.currentTest.title.toUpperCase()+ " TEST FINISHED ------------------")
+    })
+
+    context("positive scenario",()=>{
         it('user successful login', function () {
             loginPage.login("standard_user","secret_sauce")
             homePage.verifyUserLogin()
